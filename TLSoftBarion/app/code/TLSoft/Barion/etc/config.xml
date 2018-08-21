@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <payment>
+      <barion>
+        <active>0</active>
+        <title>Barion payment</title>
+        <test_mode>1</test_mode>
+        <order_status>pending_payment</order_status>
+        <payment_action>sale</payment_action>
+        <sort_order></sort_order>
+        <allowspecific>0</allowspecific>
+        <specificcountry></specificcountry>
+        <log>0</log>
+        <debug>0</debug>
+        <group>online</group>
+        <model>BarionGatewayAdapter</model>
+        <is_gateway>1</is_gateway>
+        <can_use_checkout>1</can_use_checkout>
+        <can_refund>1</can_refund>
+        <can_void>1</can_void>
+        <can_initialize>1</can_initialize>
+        <can_use_internal>0</can_use_internal>
+        <can_use_for_multishipping>0</can_use_for_multishipping>
+        <poskey></poskey>
+        <email></email>
+        <enabledlocales>HU,EN,DE,SI,ES,FR</enabledlocales>
+        <allowedcurrency>HUF,EUR,USD</allowedcurrency>
+        <start_url><![CDATA[https://api.barion.com/v2/Payment/Start]]></start_url>
+        <start_url_test><![CDATA[https://api.test.barion.com/v2/Payment/Start]]></start_url_test>
+        <redirect_url><![CDATA[https://secure.barion.com/Pay]]></redirect_url>
+        <redirect_url_test><![CDATA[https://test.barion.com/Pay]]></redirect_url_test>
+        <state_url><![CDATA[https://api.barion.com/v2/Payment/GetPaymentState]]></state_url>
+        <state_url_test><![CDATA[https://api.test.barion.com/v2/Payment/GetPaymentState]]></state_url_test>
+      </barion>
+    </payment>
+  </default>
+</config>
