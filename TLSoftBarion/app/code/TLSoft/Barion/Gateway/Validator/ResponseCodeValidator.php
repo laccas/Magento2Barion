@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
+ * Copyright ï¿½ 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace TLSoft\Barion\Gateway\Validator;
@@ -78,8 +78,9 @@ class ResponseCodeValidator extends AbstractValidator
 			return true;
 		}else{
 			foreach($result["Errors"] as $error){
-				//$logger = $objectManager->get('Psr\Log\LoggerInterface');
-				//$logger->debug(var_export($response,true));
+				/*$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+				$logger = $objectManager->get('Psr\Log\LoggerInterface');
+				$logger->debug(var_export($response,true));*/
 			}
 		}
 

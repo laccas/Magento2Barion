@@ -1,6 +1,6 @@
-<!--
+﻿<!--
 /**
- * Copyright � 2015 Magento. All rights reserved.
+ * Copyright © 2015 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
 -->
@@ -11,9 +11,15 @@
                class="radio"
                data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()" />
         <label data-bind="attr: {'for': getCode()}" class="label">
-            <img data-bind="attr: {src: getLogoSrc(), alt: $t('Barion logo')}"
-                 class="payment-icon"/>
+            <a href="https://www.barion.com/hu/vasarlok/arak-vasarloknak/" target="_blank" rel="nofollow">
+                <img data-bind="attr: {src: getLogoSrc(), alt: $t('Barion logo')}"
+                     class="payment-icon" />
+            </a>
             <span data-bind="text: getTitle()"></span>
+            <br />
+            A kényelmes és biztonságos online fizetést a Barion Payment Zrt. biztosítja.<br />
+            Magyar Nemzeti Bank engedély száma: H-EN-I-1064/2013<br />
+            Bankkártya adatai áruházunkhoz nem jutnak el.<br />
         </label>
     </div>
     <div class="payment-method-content">
@@ -30,6 +36,11 @@
                 <!-- ko i18n: 'You will be redirected to the barion website.' --><!-- /ko -->
             </div>
         </fieldset>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
         <div class="actions-toolbar">
             <br />
             <div class="primary">
