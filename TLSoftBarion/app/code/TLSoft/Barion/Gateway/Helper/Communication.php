@@ -94,7 +94,7 @@ class Communication extends AbstractHelper
 		if ($response!=false)
 		{
 			$result = $jsonHelper->jsonDecode($response);
-			if(count($result["Errors"]<1)){
+			if(count($result["Errors"])<1){
 				try{
 					$transaction = $transactionRepository->get($result["Transactions"][0]["TransactionId"]);
 				}
@@ -159,7 +159,6 @@ class Communication extends AbstractHelper
 				$this->messageManager->addError($result["Errors"][0]["Description"]."-".$result["Errors"][0]["ErrorCode"]);
 			};
 		}else{
-			$orderManagement->cancel($this->order->getId());
 			$this->responseCode = ResultCodes::RESULT_ERROR;
 		}
 
