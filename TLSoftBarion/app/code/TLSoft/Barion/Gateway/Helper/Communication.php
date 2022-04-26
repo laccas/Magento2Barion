@@ -14,7 +14,7 @@ use Magento\Sales\Api\Data\OrderInterface;
 use TLSoft\Barion\Model\Ui\ConfigProvider;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Model\Service\InvoiceService;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\DB\TransactionFactory;
@@ -48,7 +48,7 @@ class Communication extends AbstractHelper
 		ConfigProvider $configProvider,
 		OrderManagementInterface $orderManagement,
 		InvoiceService $invoiceService,
-		JsonHelper $jsonHelper,
+		Json $jsonHelper,
 		TransactionFactory $transactionFactory,
 		BuilderInterface $transactionBuilder
 		){
@@ -93,8 +93,8 @@ class Communication extends AbstractHelper
 
 		if ($response!=false)
 		{
-			$result = $jsonHelper->jsonDecode($response);
-			if(count($result["Errors"]<1)){
+			$result = $jsonHelper->unserialize($response);
+			if(count($result["Errors"])<1){
 				try{
 					$transaction = $transactionRepository->get($result["Transactions"][0]["TransactionId"]);
 				}
@@ -159,7 +159,6 @@ class Communication extends AbstractHelper
 				$this->messageManager->addError($result["Errors"][0]["Description"]."-".$result["Errors"][0]["ErrorCode"]);
 			};
 		}else{
-			$orderManagement->cancel($this->order->getId());
 			$this->responseCode = ResultCodes::RESULT_ERROR;
 		}
 
